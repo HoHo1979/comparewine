@@ -1,6 +1,5 @@
 package com.sevenpyramid.comparewine.view;
 
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,12 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellReference;
-import org.apache.poi.xssf.usermodel.XSSFFont;
-
 import com.sevenpyramid.comparewine.constant.Cons;
 import com.sevenpyramid.comparewine.design.SpreadSheetMenuDesign;
 import com.sevenpyramid.comparewine.excel.FindXssforHssfExcel;
@@ -36,6 +31,7 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.components.colorpicker.ColorChangeEvent;
 import com.vaadin.ui.components.colorpicker.ColorChangeListener;
 
+//THis is the SpreadSheetView
 public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 
 	public static final String NAME="";
