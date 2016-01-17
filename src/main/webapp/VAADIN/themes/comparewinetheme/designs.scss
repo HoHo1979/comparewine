@@ -78,3 +78,582 @@ $v-textfield-border: 0;
 	visibility: visible;
 }
 
+// Styles imported from MainDesign.html
+$v-font-size: 16px;
+$v-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$v-border-radius: 0;
+$v-textfield-bevel: false;
+$v-textfield-shadow: false;
+$v-shadow: false;
+$v-bevel: false;
+$v-gradient: false;
+$v-textfield-border: 0;
+.root-layout.navigation-template-vaadin {
+	$root-background-color: #ffffff;
+	$main-color: #5AAAFA;
+	$menu-color: #5AAAFA;
+	$header-label-font-size: 1.618em;
+	background-color: $root-background-color;
+	
+	.v-nativebutton{
+		background: none;
+		border: none;
+		
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	
+	.scroll-panel{
+		background-color: $root-background-color;
+        border: none;
+        border-radius: 0;		
+	}
+				
+	.header-bar{
+		background-color: $menu-color;
+		padding: 0px 15px 0 15px;
+		vertical-align: middle;
+		height: 65px;
+		
+		> * {
+			color: #FFFFFF;
+			float: right;
+			padding: 0;
+			line-height: 20px;
+			margin-left: 15px;
+			
+			/** Vertically center everything **/ 
+			position: relative;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+		
+		> .search-field{
+            background: none;
+			border-bottom: solid 2px #fff;
+			padding-left: 5px;
+			
+			&.v-textfield-prompt{
+				color: #ffffff;
+				font-style: italic;
+			}
+		}
+		
+	}
+	.side-bar {
+	
+		background-color: #000;
+		width: 100px;
+		
+		> .menu-button{
+			position: relative;
+			color: $main-color;
+			height: 90px;
+			
+			&.selected{
+				background-color: $root-background-color; 
+			
+				.v-nativebutton-caption {
+                    color: #1A1314;
+                }
+			}
+			
+			.v-nativebutton-caption{
+                font-size: .7em;
+                color: #E9E0E0;
+                text-transform: uppercase;
+				position: absolute;
+				bottom: 8px;
+				text-align: center;				
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.v-icon{
+				position: absolute;
+				font-size: 35px;
+				margin-left: auto;
+				margin-right: auto;
+				top: 10px;
+				left: 0;
+				right: 0;
+			}
+		}
+	}
+	
+	.header-label{
+		font-size: $header-label-font-size;
+		width: 100%;
+		margin-bottom: 20px;
+		color: #000000;
+		border-bottom: 3px solid #D0C7C7;
+	}
+	
+	.header-label-small{
+		width: 100%;
+		color: $main-color;
+        text-transform: uppercase;
+		border-bottom: 2px solid #D0C7C7;
+	}
+	
+	.dashboard-layout{
+		padding: 60px 60px 0 60px;
+	}
+    
+	.dashboard-item{
+		background-color: #f6f3f3;
+		border: 1px solid white;
+		margin: 0 30px 30px 0px;
+		padding: 15px;
+		
+		> .statistics-label{
+			margin-top: 15px;
+			
+			.statistics-value{
+				float: right;
+				font-weight: bold;
+			}
+		}
+	}
+	
+	&[width-range~="321px-768px"]{
+		.dashboard-layout{
+			padding: 10px;
+		}
+		
+		.dashboard-item{
+			width: 100% !important;
+			min-width: 321px;
+			margin: 0;
+		}
+		
+		.side-bar{
+			width: 60px;
+			
+			> .menu-button{
+			
+				height: 50px;
+			
+				> .v-nativebutton-caption{
+					visibility: hidden;
+				}
+				
+				> .v-icon{
+					top: 0;
+				}
+			}
+		}
+		
+		.header-bar{
+			height: 45px;
+			padding: 2px;	
+		}
+	}
+}
+.navigation-template-vaadin[width-range~="321px-768px"]{
+	visibility: visible;
+}
+
+// Styles imported from MainDesign.html
+.root-layout.navigation-template-vaadin {
+	$root-background-color: #ffffff;
+	$template-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 	
+	
+	$header-bar-background: #5AAAFA;
+	$header-bar-font-size: 16px;
+	$header-bar-text-color: #fff;
+	
+	$search-field-border: 0;
+	$search-field-bevel: 0;
+	$search-field-prompt-color: #fff;
+	$search-field-border-color: $header-bar-text-color;
+	$username-label-color: #fff;
+	
+	$side-bar-background: #000;
+	$menu-button-selected-text-color: #1A1314;
+	$menu-button-selected-background: $root-background-color;
+	$menu-button-text-color: #fff;
+	$menu-button-icon-color: #5AAAFA;
+	
+	
+	background-color: $root-background-color;
+	
+	.header-bar .v-nativebutton,
+	.side-bar .v-nativebutton {
+		background: none;
+		border: none;
+		
+		&:hover{
+			cursor: pointer;
+		}
+	}
+
+	.scroll-panel {
+		background-color: $root-background-color;
+        border: none;
+        border-radius: 0;		
+	}
+				
+	.header-bar {
+		background-color: $header-bar-background;
+		padding: 0px 15px 0 15px;
+		vertical-align: middle;
+		height: 65px;
+		
+		> * {
+			color: $header-bar-text-color;
+			float: right;
+			padding: 0;
+			line-height: 20px;
+			margin-left: 15px;
+			font-size: $header-bar-font-size;
+			font-family: $template-font-family;
+			
+			/** Vertically center everything **/ 
+			position: relative;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+		
+		> .search-field {
+			background: none;
+			color: $search-field-prompt-color;
+			padding-left: 5px;
+			box-shadow: none;
+			border: $search-field-border;
+			border-bottom: solid 2px $search-field-border-color;
+			border-radius: 0;
+			font-style: italic;
+		}
+		
+		.user-name-label {
+		    color: $username-label-color;
+		}
+	}
+		
+	.side-bar {
+		background-color: $side-bar-background;
+		width: 100px;
+		
+		> .menu-button {
+			position: relative;
+			color: $menu-button-text-color;
+			height: 90px;
+			
+			&.selected{
+				background-color: $menu-button-selected-background; 
+			
+				.v-nativebutton-caption {
+					color: $menu-button-selected-text-color;
+				}
+		
+			}
+			
+			.v-nativebutton-caption {
+				font-family: $template-font-family;				
+				font-size: .7em;
+				text-transform: uppercase;
+				position: absolute;
+				bottom: 8px;
+				text-align: center;				
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.v-icon {
+				color: $menu-button-icon-color;
+				position: absolute;
+				font-size: 35px;
+				margin-left: auto;
+				margin-right: auto;
+				top: 10px;
+				left: 0;
+				right: 0;
+			}
+		}
+	}	
+   
+	.dashboard-layout {
+		padding: 60px 60px 0 60px;
+	}
+    	
+	&[width-range~="321px-768px"] {
+		.dashboard-layout{
+			padding: 10px;
+		}
+		
+		.dashboard-item {
+			width: 100% !important;
+			min-width: 321px;
+			margin: 0;
+		}
+	
+		.side-bar {
+			width: 60px;
+			
+			> .menu-button{
+			
+				height: 50px;
+			
+				> .v-nativebutton-caption{
+					visibility: hidden;
+				}
+				
+				> .v-icon{
+					top: 0;
+				}
+			}
+		}
+		
+		.header-bar {
+			height: 45px;
+			padding: 2px;	
+		}
+	}
+}
+
+.navigation-template-vaadin[width-range~="321px-768px"]{
+	visibility: visible;
+}
+
+// Styles imported from DashboardDesign.html
+.root-layout.dashboard-view-template-vaadin {
+	$root-background-color: #ffffff;
+	$template-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	$main-color: #5AAAFA;
+	$menu-color: #5AAAFA;
+	$header-label-font-size: 1.618em;
+	background-color: $root-background-color;
+	padding: 60px;
+	
+	.v-nativebutton {
+		background: none;
+		border: none;
+		
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	
+	.header-label {
+		font-size: $header-label-font-size;
+		font-family: $template-font-family;
+		width: 100%;
+		margin-bottom: 20px;
+		color: #000000;
+		border-bottom: 3px solid #D0C7C7;
+	}
+	
+	.header-label-small {
+	    font-family: $template-font-family;
+		width: 100%;
+		color: $main-color;
+        text-transform: uppercase;
+		border-bottom: 2px solid #D0C7C7;
+	}
+	
+	.dashboard-layout {
+		padding: 60px 60px 0 60px;
+	}
+    
+	.dashboard-item {
+		background-color: #f6f3f3;
+		border: 1px solid white;
+		margin: 0 30px 30px 0px;
+		padding: 15px;
+		
+		> .statistics-label{
+			margin-top: 15px;
+			font-family: $template-font-family;
+			
+			.statistics-value{
+				float: right;
+				font-weight: bold;
+			}
+		}
+	}
+	
+	&[width-range~="321px-768px"]{
+		padding: 10px;
+		
+		.dashboard-layout{
+			padding: 10px;
+		}
+		
+		.dashboard-item{
+			width: 100% !important;
+			min-width: 321px;
+			margin: 0;
+		}
+	}
+}
+
+.dashboard-view-template-vaadin[width-range~="321px-768px"]{
+	visibility: visible;
+}
+
+// Styles imported from OrderDesign.html
+.root-layout.form-template-vaadin {
+	$root-background-color: #fff;
+    $template-font-size: 16px;
+    $template-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+    $dark-text-color: #323C3C;
+    $lighter-text-color: #959F9F;
+    
+    $billing-form-background: #f6f3f3;
+	$billing-form-border-color: #fff;
+	$form-text-field-border: #D0C7C7;
+	
+	$header-label-font-size: 1.618em;
+	$header-label-text-color: #000;
+	$header-label-border-color: #D0C7C7;
+	
+    $order-summary-background: #8CD211;
+    $order-summary-header-color: #fff;
+    $order-summary-header-border-color: #C8F08F;	
+    $order-summary-text-color: #fff;
+    $cancel-order-icon-color: #4B8400;    
+	$total-sum-border-color: #C8F08F;
+    $total-sum-text-color: #C8F08F;
+        
+	$header-bar-height: 100px;
+
+	background-color: $root-background-color;
+	padding: 60px;
+
+	.v-nativebutton {
+		background: none;
+		border: none;
+		
+		&:hover{
+			cursor: pointer;
+		}
+	}
+
+	.header-label {
+	    font-family: $template-font-family;
+		font-size: $header-label-font-size;
+		width: 100%;
+		margin-bottom: 20px;
+		color: $header-label-text-color;
+		border-bottom: 3px solid $header-label-border-color;
+	}
+	
+	.billing-formlayout {
+		background: $billing-form-background;
+		border: solid 1px $billing-form-border-color;
+		margin: 0 30px 0 0px;
+		float: left;
+		padding: 20px;
+		width: 100%;
+		max-width: 722px;
+		
+		.v-label {
+	       font-family: $template-font-family;
+		}
+		
+		.form-textfield {
+		    font-family: $template-font-family;
+			background: none;
+			border-radius: 0;
+			border: none;
+			box-shadow: none;
+			border-bottom: 2px solid $form-text-field-border;
+		}
+		
+		.email-field {
+			min-width: 250px;
+		}
+    }
+        
+    .order-summary-layout {
+		background-color: $order-summary-background;
+		float: right;
+		padding: 20px;
+         
+        .v-label {
+            font-family: $template-font-family;
+            color: $order-summary-text-color;
+        }         
+            
+        .header-label-small {
+			width: 100%;
+			text-transform: uppercase;
+            color: $order-summary-header-color;
+            border-bottom: 2px solid $order-summary-header-border-color;
+        }
+		
+		.cancel-order-button {
+			background: none;
+			border: none;
+			position: relative; 
+			margin-left: 15px;
+			margin-top: 10px;
+			padding: 0;
+			float: right;
+
+			.v-icon{
+				font-size: 25px;
+				width: 25px;
+				height: 25px;
+				line-height: 25px;
+				color: $cancel-order-icon-color;
+			}
+		}
+		
+		.order-sum {
+			position: absolute;
+			left: 170px;
+			text-align: right;
+			width: 150px;
+		}
+		
+		.total-sum {
+			border-top: solid 2px $total-sum-border-color; 
+			color: $total-sum-text-color !important;
+			font-size: 2em;
+			&:first-letter {
+				font-weight: 400;
+			}
+		}
+	}
+
+	&[width-range~="321px-768px"]{
+		padding: 10px;
+		
+		.billing-formlayout{
+			margin: 15px 0 0 0;
+			width: 100% !important;
+		}
+			
+		.order-summary-layout{
+			margin: 15px 0 0 0;
+		}
+	}
+	
+	&[width-range~="769px-1426px"]{
+		.billing-formlayout{
+			margin-bottom: 30px;
+		}
+		
+		.order-summary-layout{
+			float: left;
+		}
+	}
+}
+
+.form-template-vaadin[width-range~="321px-768px"],
+.form-template-vaadin[width-range~="769px-1426px"]{
+	visibility: visible;
+}
+

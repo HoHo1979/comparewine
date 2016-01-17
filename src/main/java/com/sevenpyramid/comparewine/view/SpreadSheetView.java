@@ -34,7 +34,7 @@ import com.vaadin.ui.components.colorpicker.ColorChangeListener;
 //THis is the SpreadSheetView
 public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 
-	public static final String NAME="";
+	public static final String NAME="SPREADSHEET";
 	
 	static FindFilesUnderDirectory fd = new FindFilesUnderDirectory(Cons.DIRECTORY);
 	static List<File> files = fd.getVaadinWebAbsoultPathFiles();

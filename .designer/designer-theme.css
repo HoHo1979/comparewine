@@ -65,6 +65,504 @@
 	visibility: visible;
 }
 
+.root-layout.navigation-template-vaadin {
+	background-color: #ffffff;
+}
+
+.root-layout.navigation-template-vaadin .v-nativebutton {
+	background: none;
+	border: none;
+}
+
+.root-layout.navigation-template-vaadin .v-nativebutton:hover {
+	cursor: pointer;
+}
+
+.root-layout.navigation-template-vaadin .scroll-panel {
+	background-color: #ffffff;
+	border: none;
+	border-radius: 0;
+}
+
+.root-layout.navigation-template-vaadin .header-bar {
+	background-color: #5AAAFA;
+	padding: 0px 15px 0 15px;
+	vertical-align: middle;
+	height: 65px;
+}
+
+.root-layout.navigation-template-vaadin .header-bar  > * {
+	color: #FFFFFF;
+	float: right;
+	padding: 0;
+	line-height: 20px;
+	margin-left: 15px;/** Vertically center everything **/
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.root-layout.navigation-template-vaadin .header-bar  > .search-field {
+	background: none;
+	border-bottom: solid 2px #fff;
+	padding-left: 5px;
+}
+
+.root-layout.navigation-template-vaadin .header-bar  > .search-field.v-textfield-prompt {
+	color: #ffffff;
+	font-style: italic;
+}
+
+.root-layout.navigation-template-vaadin .side-bar {
+	background-color: #000;
+	width: 100px;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button {
+	position: relative;
+	color: #5AAAFA;
+	height: 90px;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button.selected {
+	background-color: #ffffff;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button.selected .v-nativebutton-caption {
+	color: #1A1314;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button .v-nativebutton-caption {
+	font-size: 0.7em;
+	color: #E9E0E0;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 8px;
+	text-align: center;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button .v-icon {
+	position: absolute;
+	font-size: 35px;
+	margin-left: auto;
+	margin-right: auto;
+	top: 10px;
+	left: 0;
+	right: 0;
+}
+
+.root-layout.navigation-template-vaadin .header-label {
+	font-size: 1.618em;
+	width: 100%;
+	margin-bottom: 20px;
+	color: #000000;
+	border-bottom: 3px solid #D0C7C7;
+}
+
+.root-layout.navigation-template-vaadin .header-label-small {
+	width: 100%;
+	color: #5AAAFA;
+	text-transform: uppercase;
+	border-bottom: 2px solid #D0C7C7;
+}
+
+.root-layout.navigation-template-vaadin .dashboard-layout {
+	padding: 60px 60px 0 60px;
+}
+
+.root-layout.navigation-template-vaadin .dashboard-item {
+	background-color: #f6f3f3;
+	border: 1px solid white;
+	margin: 0 30px 30px 0px;
+	padding: 15px;
+}
+
+.root-layout.navigation-template-vaadin .dashboard-item  > .statistics-label {
+	margin-top: 15px;
+}
+
+.root-layout.navigation-template-vaadin .dashboard-item  > .statistics-label .statistics-value {
+	float: right;
+	font-weight: bold;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .dashboard-layout {
+	padding: 10px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .dashboard-item {
+	width: 100% !important;
+	min-width: 321px;
+	margin: 0;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar {
+	width: 60px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar  > .menu-button {
+	height: 50px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar  > .menu-button  > .v-nativebutton-caption {
+	visibility: hidden;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar  > .menu-button  > .v-icon {
+	top: 0;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .header-bar {
+	height: 45px;
+	padding: 2px;
+}
+
+.navigation-template-vaadin[width-range~="321px-768px"] {
+	visibility: visible;
+}
+
+.root-layout.navigation-template-vaadin {
+	background-color: #ffffff;
+}
+
+.root-layout.navigation-template-vaadin .header-bar .v-nativebutton, .root-layout.navigation-template-vaadin .side-bar .v-nativebutton {
+	background: none;
+	border: none;
+}
+
+.root-layout.navigation-template-vaadin .header-bar .v-nativebutton:hover, .root-layout.navigation-template-vaadin .side-bar .v-nativebutton:hover {
+	cursor: pointer;
+}
+
+.root-layout.navigation-template-vaadin .scroll-panel {
+	background-color: #ffffff;
+	border: none;
+	border-radius: 0;
+}
+
+.root-layout.navigation-template-vaadin .header-bar {
+	background-color: #5AAAFA;
+	padding: 0px 15px 0 15px;
+	vertical-align: middle;
+	height: 65px;
+}
+
+.root-layout.navigation-template-vaadin .header-bar  > * {
+	color: #fff;
+	float: right;
+	padding: 0;
+	line-height: 20px;
+	margin-left: 15px;
+	font-size: 16px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;/** Vertically center everything **/
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.root-layout.navigation-template-vaadin .header-bar  > .search-field {
+	background: none;
+	color: #fff;
+	padding-left: 5px;
+	box-shadow: none;
+	border: 0;
+	border-bottom: solid 2px #fff;
+	border-radius: 0;
+	font-style: italic;
+}
+
+.root-layout.navigation-template-vaadin .header-bar .user-name-label {
+	color: #fff;
+}
+
+.root-layout.navigation-template-vaadin .side-bar {
+	background-color: #000;
+	width: 100px;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button {
+	position: relative;
+	color: #fff;
+	height: 90px;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button.selected {
+	background-color: #ffffff;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button.selected .v-nativebutton-caption {
+	color: #1A1314;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button .v-nativebutton-caption {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 8px;
+	text-align: center;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.root-layout.navigation-template-vaadin .side-bar  > .menu-button .v-icon {
+	color: #5AAAFA;
+	position: absolute;
+	font-size: 35px;
+	margin-left: auto;
+	margin-right: auto;
+	top: 10px;
+	left: 0;
+	right: 0;
+}
+
+.root-layout.navigation-template-vaadin .dashboard-layout {
+	padding: 60px 60px 0 60px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .dashboard-layout {
+	padding: 10px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .dashboard-item {
+	width: 100% !important;
+	min-width: 321px;
+	margin: 0;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar {
+	width: 60px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar  > .menu-button {
+	height: 50px;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar  > .menu-button  > .v-nativebutton-caption {
+	visibility: hidden;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .side-bar  > .menu-button  > .v-icon {
+	top: 0;
+}
+
+.root-layout.navigation-template-vaadin[width-range~="321px-768px"] .header-bar {
+	height: 45px;
+	padding: 2px;
+}
+
+.navigation-template-vaadin[width-range~="321px-768px"] {
+	visibility: visible;
+}
+
+.root-layout.dashboard-view-template-vaadin {
+	background-color: #ffffff;
+	padding: 60px;
+}
+
+.root-layout.dashboard-view-template-vaadin .v-nativebutton {
+	background: none;
+	border: none;
+}
+
+.root-layout.dashboard-view-template-vaadin .v-nativebutton:hover {
+	cursor: pointer;
+}
+
+.root-layout.dashboard-view-template-vaadin .header-label {
+	font-size: 1.618em;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 100%;
+	margin-bottom: 20px;
+	color: #000000;
+	border-bottom: 3px solid #D0C7C7;
+}
+
+.root-layout.dashboard-view-template-vaadin .header-label-small {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 100%;
+	color: #5AAAFA;
+	text-transform: uppercase;
+	border-bottom: 2px solid #D0C7C7;
+}
+
+.root-layout.dashboard-view-template-vaadin .dashboard-layout {
+	padding: 60px 60px 0 60px;
+}
+
+.root-layout.dashboard-view-template-vaadin .dashboard-item {
+	background-color: #f6f3f3;
+	border: 1px solid white;
+	margin: 0 30px 30px 0px;
+	padding: 15px;
+}
+
+.root-layout.dashboard-view-template-vaadin .dashboard-item  > .statistics-label {
+	margin-top: 15px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.root-layout.dashboard-view-template-vaadin .dashboard-item  > .statistics-label .statistics-value {
+	float: right;
+	font-weight: bold;
+}
+
+.root-layout.dashboard-view-template-vaadin[width-range~="321px-768px"] {
+	padding: 10px;
+}
+
+.root-layout.dashboard-view-template-vaadin[width-range~="321px-768px"] .dashboard-layout {
+	padding: 10px;
+}
+
+.root-layout.dashboard-view-template-vaadin[width-range~="321px-768px"] .dashboard-item {
+	width: 100% !important;
+	min-width: 321px;
+	margin: 0;
+}
+
+.dashboard-view-template-vaadin[width-range~="321px-768px"] {
+	visibility: visible;
+}
+
+.root-layout.form-template-vaadin {
+	background-color: #fff;
+	padding: 60px;
+}
+
+.root-layout.form-template-vaadin .v-nativebutton {
+	background: none;
+	border: none;
+}
+
+.root-layout.form-template-vaadin .v-nativebutton:hover {
+	cursor: pointer;
+}
+
+.root-layout.form-template-vaadin .header-label {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1.618em;
+	width: 100%;
+	margin-bottom: 20px;
+	color: #000;
+	border-bottom: 3px solid #D0C7C7;
+}
+
+.root-layout.form-template-vaadin .billing-formlayout {
+	background: #f6f3f3;
+	border: solid 1px #fff;
+	margin: 0 30px 0 0px;
+	float: left;
+	padding: 20px;
+	width: 100%;
+	max-width: 722px;
+}
+
+.root-layout.form-template-vaadin .billing-formlayout .v-label {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.root-layout.form-template-vaadin .billing-formlayout .form-textfield {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: none;
+	border-radius: 0;
+	border: none;
+	box-shadow: none;
+	border-bottom: 2px solid #D0C7C7;
+}
+
+.root-layout.form-template-vaadin .billing-formlayout .email-field {
+	min-width: 250px;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout {
+	background-color: #8CD211;
+	float: right;
+	padding: 20px;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .v-label {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .header-label-small {
+	width: 100%;
+	text-transform: uppercase;
+	color: #fff;
+	border-bottom: 2px solid #C8F08F;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .cancel-order-button {
+	background: none;
+	border: none;
+	position: relative;
+	margin-left: 15px;
+	margin-top: 10px;
+	padding: 0;
+	float: right;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .cancel-order-button .v-icon {
+	font-size: 25px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	color: #4B8400;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .order-sum {
+	position: absolute;
+	left: 170px;
+	text-align: right;
+	width: 150px;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .total-sum {
+	border-top: solid 2px #C8F08F;
+	color: #C8F08F !important;
+	font-size: 2em;
+}
+
+.root-layout.form-template-vaadin .order-summary-layout .total-sum:first-letter {
+	font-weight: 400;
+}
+
+.root-layout.form-template-vaadin[width-range~="321px-768px"] {
+	padding: 10px;
+}
+
+.root-layout.form-template-vaadin[width-range~="321px-768px"] .billing-formlayout {
+	margin: 15px 0 0 0;
+	width: 100% !important;
+}
+
+.root-layout.form-template-vaadin[width-range~="321px-768px"] .order-summary-layout {
+	margin: 15px 0 0 0;
+}
+
+.root-layout.form-template-vaadin[width-range~="769px-1426px"] .billing-formlayout {
+	margin-bottom: 30px;
+}
+
+.root-layout.form-template-vaadin[width-range~="769px-1426px"] .order-summary-layout {
+	float: left;
+}
+
+.form-template-vaadin[width-range~="321px-768px"], .form-template-vaadin[width-range~="769px-1426px"] {
+	visibility: visible;
+}
+
 /**
  * Checks if a list contains a certain value.
  * 

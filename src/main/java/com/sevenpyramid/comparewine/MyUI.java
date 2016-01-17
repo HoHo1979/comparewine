@@ -2,6 +2,7 @@ package com.sevenpyramid.comparewine;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.sevenpyramid.comparewine.view.MainView;
 import com.sevenpyramid.comparewine.view.SpreadSheetView;
 import com.vaadin.addon.spreadsheet.Spreadsheet;
 import com.vaadin.annotations.Theme;
@@ -23,8 +24,7 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         
-    	Navigator navigator = new Navigator(this, this);
-    	navigator.addView(SpreadSheetView.NAME, SpreadSheetView.class);
+    	setContent(new MainView());
     	
     }
 
