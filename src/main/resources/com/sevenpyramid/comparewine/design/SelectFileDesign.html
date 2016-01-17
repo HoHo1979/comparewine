@@ -5,7 +5,10 @@
  </head> 
  <body> 
   <vaadin-vertical-layout size-full="true" margin="true"> 
-   <vaadin-grid size-full="true" _id="fileGrid" :expand=""></vaadin-grid> 
+   <vaadin-horizontal-layout spacing="true" size-full="true" :expand=""> 
+    <vaadin-tree-table size-full="true" _id="fileTreeTable" :expand=""></vaadin-tree-table> 
+    <vaadin-grid size-full="true" _id="selectedGrid" :expand=""></vaadin-grid> 
+   </vaadin-horizontal-layout> 
   </vaadin-vertical-layout>  
  </body>
 </html>

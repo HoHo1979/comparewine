@@ -20,6 +20,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Tree;
+import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.Upload.Receiver;
 
 public class AddExcelFileView extends AddExcelFileDesign implements View,Receiver {
@@ -47,9 +48,9 @@ public class AddExcelFileView extends AddExcelFileDesign implements View,Receive
 		File folder = new File(filesUnderDirectory.getVaadinWebAbsoultPath());
 		FilesystemContainer filesystemContainer = new FilesystemContainer(folder);
 		
-		Tree fileTree = new Tree("Excel　Files", filesystemContainer);
-		
-		filePanel.setContent(fileTree);
+		fileTreeTable.setContainerDataSource(filesystemContainer);
+		fileTreeTable.setVisibleColumns("Name");
+		fileTreeTable.setImmediate(true);
 	}
 	
 	
