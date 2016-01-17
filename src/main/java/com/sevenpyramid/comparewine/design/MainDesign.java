@@ -32,6 +32,7 @@ public class MainDesign extends VerticalLayout {
 	protected NativeButton menuButton1;
 	protected NativeButton menuButton2;
 	protected NativeButton menuButton3;
+	protected NativeButton menuButton4;
 	protected Panel scroll_panel;
 
 	public MainDesign() {
