@@ -10,6 +10,7 @@ import java.util.Set;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellReference;
+
 import com.sevenpyramid.comparewine.constant.Cons;
 import com.sevenpyramid.comparewine.design.SpreadSheetMenuDesign;
 import com.sevenpyramid.comparewine.excel.FindXssforHssfExcel;
@@ -36,19 +37,18 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 
 	public static final String NAME="SPREADSHEET";
 	
-	static FindFilesUnderDirectory fd = new FindFilesUnderDirectory(Cons.DIRECTORY);
-	static List<File> files = fd.getVaadinWebAbsoultPathFiles();
-	static Spreadsheet spreadsheet = null;
-	static ArrayList<Cell> cellValueChangeList=null;
-	
+	FindFilesUnderDirectory fd = new FindFilesUnderDirectory(Cons.DIRECTORY);
+	List<File> files = fd.getVaadinWebAbsoultPathFiles();
+	Spreadsheet spreadsheet = null;
+	ArrayList<Cell> cellValueChangeList=null;
+	File file;
 	
 	public SpreadSheetView() {
 
-	
 		try {
 				
 				FindXssforHssfExcel xssforHssfExcel = new FindXssforHssfExcel(files.get(0));
-				
+				file=files.get(0);
 				if(xssforHssfExcel.isXSSF()==true){
 				spreadsheet = new Spreadsheet();
 				spreadsheet.setWorkbook(xssforHssfExcel.getXSSFWorkbook());
@@ -75,8 +75,46 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 			e.printStackTrace();
 		}
 
-		saveButton.addClickListener(SpreadSheetView::saveExcelFile);
+		saveButton.addClickListener(this::saveExcelFile);
 
+	}
+
+	public SpreadSheetView(String value) {
+		
+		file = new File(fd.getVaadinWebAbsoultPath()+value);
+		
+		try {
+			
+			FindXssforHssfExcel xssforHssfExcel = new FindXssforHssfExcel(file);
+			
+			if(xssforHssfExcel.isXSSF()==true){
+			spreadsheet = new Spreadsheet();
+			spreadsheet.setWorkbook(xssforHssfExcel.getXSSFWorkbook());
+			spreadsheet.addActionHandler(new SpreadsheetDefaultActionHandler());
+			
+			spreadsheet.addCellValueChangeListener(new CellValueChangeListener() {
+				
+				@Override
+				public void onCellValueChange(CellValueChangeEvent event) {
+					cellValueChangeList = new ArrayList<Cell>();
+					
+					for(CellReference cellReference:event.getChangedCells()){
+					cellValueChangeList.add(spreadsheet.getCell(cellReference));
+					}
+				}
+			});
+			
+			spreadsheet.setHeight("100%");
+			spreadSheetLayout.addComponent(spreadsheet);
+
+			}
+			
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	saveButton.addClickListener(this::saveExcelFile);
+		
 	}
 
 	@Override
@@ -85,10 +123,7 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	}
 
 	
-	
-	
-	
-	public static void saveExcelFile(Event event){
+	public void saveExcelFile(Event event){
 		
 		try {
 			
@@ -119,7 +154,7 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 			}
 			
 			Workbook wb=spreadsheet.getWorkbook();
-			FileOutputStream fileOutputStream = new FileOutputStream(files.get(0));
+			FileOutputStream fileOutputStream = new FileOutputStream(file);
 			wb.write(fileOutputStream);
 			fileOutputStream.close();
 			Notification.show("The file is successfully saved");

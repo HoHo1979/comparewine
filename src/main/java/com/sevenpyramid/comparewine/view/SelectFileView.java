@@ -25,6 +25,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.shared.ui.MultiSelectMode;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid;
@@ -36,7 +37,7 @@ public class SelectFileView extends SelectFileDesign implements View {
 	Set<String> selectedFiles;
 	
 	public SelectFileView() {
-		selectedGrid.setCaption("Selected File");
+		
 		
 		selectedFiles = new HashSet<String>();
 		
@@ -69,10 +70,10 @@ public class SelectFileView extends SelectFileDesign implements View {
 								item.getItemProperty("Name").setValue(value);
 							});
 				
-
 				selectedGrid.setContainerDataSource(container);
 				selectedGrid.setEditorEnabled(true);
 				selectedGrid.setImmediate(true);
+				UI.getCurrent().getSession().setAttribute(Cons.SELECTED_FILE, selectedFiles);
 				
 			}
 		});

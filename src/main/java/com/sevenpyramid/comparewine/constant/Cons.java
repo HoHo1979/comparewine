@@ -6,5 +6,6 @@ public class Cons {
 	public static final String DUCLOT="DUCLOT";
 	public static final String SOVEX_WOLTNER="sovex-woltner";
 	public static final String LOUIS_VIALARD="Louis Vialard";
+	public static final String SELECTED_FILE="SELECTEDFILE";
 	
 }
