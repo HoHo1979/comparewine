@@ -21,14 +21,13 @@ public class CollaborateHeadView extends CollaborateHeadDesign implements View {
 		HashSet<String> selectedFile=(HashSet<String>) UI.getCurrent().getSession().getAttribute(Cons.SELECTED_FILE);
 		
 		if(selectedFile!=null){
+			
 			selectedFile.stream()
 					.forEach(value->excelTabSheet.addTab(new SpreadSheetView(value), value));
 
-		
-		//	excelTabSheet.addSelectedTabChangeListener(event->event.getTabSheet().addComponent(new SpreadSheetView(event.getTabSheet().getCaption())));
 			excelTabSheet.setImmediate(true);
 		}else{
-			Notification.show("Please Seleted files");
+			Notification.show("Please Select files");
 		}
 	}
 

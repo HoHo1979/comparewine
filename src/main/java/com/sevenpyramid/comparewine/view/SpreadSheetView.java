@@ -16,21 +16,19 @@ import com.sevenpyramid.comparewine.design.SpreadSheetMenuDesign;
 import com.sevenpyramid.comparewine.excel.FindXssforHssfExcel;
 import com.sevenpyramid.comparewine.files.FindFilesUnderDirectory;
 import com.vaadin.addon.spreadsheet.Spreadsheet;
-import com.vaadin.addon.spreadsheet.Spreadsheet.CellValueChangeEvent;
-import com.vaadin.addon.spreadsheet.Spreadsheet.CellValueChangeListener;
-import com.vaadin.addon.spreadsheet.action.SpreadsheetDefaultActionHandler;
+import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.FontAwesome;
-import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.ColorPicker;
+import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
-import com.vaadin.ui.components.colorpicker.ColorChangeEvent;
-import com.vaadin.ui.components.colorpicker.ColorChangeListener;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.Window;
+import com.vaadin.ui.Button.ClickEvent;
+
 
 //THis is the SpreadSheetView
 public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
@@ -42,80 +40,121 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	Spreadsheet spreadsheet = null;
 	ArrayList<Cell> cellValueChangeList=null;
 	File file;
+	List<String> headerList;
+	String headerValue;
 	
 	public SpreadSheetView() {
 
+	}
+
+	
+	
+	
+	public SpreadSheetView(String value) {
+
+		file = new File(fd.getVaadinWebAbsoultPath() + value);
+
 		try {
-				
-				FindXssforHssfExcel xssforHssfExcel = new FindXssforHssfExcel(files.get(0));
-				file=files.get(0);
-				if(xssforHssfExcel.isXSSF()==true){
+
+			FindXssforHssfExcel xssforHssfExcel = new FindXssforHssfExcel(file);
+
+			if (xssforHssfExcel.isXSSF() == true) {
 				spreadsheet = new Spreadsheet();
 				spreadsheet.setWorkbook(xssforHssfExcel.getXSSFWorkbook());
-				spreadsheet.addActionHandler(new SpreadsheetDefaultActionHandler());
-				
-				spreadsheet.addCellValueChangeListener(new CellValueChangeListener() {
-					
-					@Override
-					public void onCellValueChange(CellValueChangeEvent event) {
-						cellValueChangeList = new ArrayList<Cell>();
-						
-						for(CellReference cellReference:event.getChangedCells()){
-						cellValueChangeList.add(spreadsheet.getCell(cellReference));
-						}
-					}
-				});
-				
-				
-				spreadsheet.setSizeFull();
+			
+				spreadsheet.addCellValueChangeListener(event->{
+								cellValueChangeList = new ArrayList<Cell>();
+								for (CellReference cellReference : event.getChangedCells()) {
+									cellValueChangeList.add(spreadsheet.getCell(cellReference));
+								}
+						});
+
+				spreadsheet.setHeight("100%");
 				spreadSheetLayout.addComponent(spreadsheet);
-				}
-				
+
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		saveButton.addClickListener(this::saveExcelFile);
+		setHeaderButton.addClickListener(this::setHeader);
+		matchHeaderButton.addClickListener(this::matchHeader);
 
 	}
-
-	public SpreadSheetView(String value) {
-		
-		file = new File(fd.getVaadinWebAbsoultPath()+value);
-		
-		try {
+	
+	public void setHeader(Button.ClickEvent event) {
+		headerList = new ArrayList<String>();
+		UI.getCurrent().getSession().setAttribute(Cons.SEL_HEADER,getSelectedCells());
 			
-			FindXssforHssfExcel xssforHssfExcel = new FindXssforHssfExcel(file);
-			
-			if(xssforHssfExcel.isXSSF()==true){
-			spreadsheet = new Spreadsheet();
-			spreadsheet.setWorkbook(xssforHssfExcel.getXSSFWorkbook());
-			spreadsheet.addActionHandler(new SpreadsheetDefaultActionHandler());
-			
-			spreadsheet.addCellValueChangeListener(new CellValueChangeListener() {
-				
-				@Override
-				public void onCellValueChange(CellValueChangeEvent event) {
-					cellValueChangeList = new ArrayList<Cell>();
-					
-					for(CellReference cellReference:event.getChangedCells()){
-					cellValueChangeList.add(spreadsheet.getCell(cellReference));
-					}
-				}
-			});
-			
-			spreadsheet.setHeight("100%");
-			spreadSheetLayout.addComponent(spreadsheet);
-
-			}
-			
-	} catch (Exception e) {
-		e.printStackTrace();
 	}
 
-	saveButton.addClickListener(this::saveExcelFile);
+	@SuppressWarnings("unchecked")
+	public void matchHeader(Button.ClickEvent event) {
+
+		List<String> selHeader=(List<String>) UI.getCurrent().getSession().getAttribute(Cons.SEL_HEADER);
+		Set<CellReference> cReferences=spreadsheet.getSelectedCellReferences();
+		
+		
+		if(cReferences!=null){
+			cReferences.stream()
+						.forEach(reference->{
+							//for each reference match the header that is pre set.
+							if((spreadsheet.getCell(reference).getCellType()==Cell.CELL_TYPE_STRING)||
+									(spreadsheet.getCell(reference).getCellType()==Cell.CELL_TYPE_BLANK)){
+									
+								
+								
+								Window w1 = new Window();
+								ComboBox c1=new ComboBox("Match Header", selHeader);
+								Button b1 = new Button("Comfirm");
+								
+								c1.addValueChangeListener(new ValueChangeListener() {
+									
+									@Override
+									public void valueChange(ValueChangeEvent event) {
+										
+										spreadsheet.getCell(reference).setCellValue((String)event.getProperty().getValue());
+										spreadsheet.refreshCells(spreadsheet.getCell(reference));
+										
+									}
+								});
+								
+								b1.addClickListener(new ClickListener() {
+									
+									@Override
+									public void buttonClick(ClickEvent event) {
+										saveExcelFile(event);
+										w1.close();
+									}
+								});
+								HorizontalLayout hlayout=new HorizontalLayout();
+								hlayout.addComponent(c1);
+								hlayout.addComponent(b1);
+								hlayout.setSpacing(true);
+								hlayout.setMargin(true);
+								w1.setContent(hlayout);
+								w1.setHeight("200px");
+								w1.setWidth("400px");
+								w1.center();
+								UI.getCurrent().addWindow(w1);
+								
+							}
+						});
+			
+
+		}
+		
 		
 	}
+	
+	public void getValue(ValueChangeEvent vEvent){
+		
+		headerValue=(String) vEvent.getProperty().getValue();
+		System.out.println(headerValue);
+	}
+	
 
 	@Override
 	public void enter(ViewChangeEvent event) {
@@ -123,7 +162,7 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	}
 
 	
-	public void saveExcelFile(Event event){
+	public void saveExcelFile(Button.ClickEvent event){
 		
 		try {
 			
@@ -132,26 +171,6 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 				spreadsheet.refreshCells(cellValueChangeList);
 			}
 			
-			//Select the column that is going to be header
-			Set<CellReference> cReferences=spreadsheet.getSelectedCellReferences();	
-			
-			if (cReferences != null) {
-
-				for (CellReference reference : cReferences) {
-
-					if (spreadsheet.getCell(reference) != null) {
-
-						if (spreadsheet.getCell(reference).getCellType() == Cell.CELL_TYPE_BLANK) {
-							
-						} else if (spreadsheet.getCell(reference).getCellType() == Cell.CELL_TYPE_ERROR) {
-							
-						} else if (spreadsheet.getCell(reference).getCellType() == Cell.CELL_TYPE_STRING) {
-							
-						}
-					}
-				}
-
-			}
 			
 			Workbook wb=spreadsheet.getWorkbook();
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -165,50 +184,32 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 		}
 		
 	}
-	
-	
 
-	private HorizontalLayout createStyleToolbar() {
-		HorizontalLayout toolbar = new HorizontalLayout();
-		Button boldButton = new Button(FontAwesome.BOLD);
-		boldButton.addClickListener(new ClickListener() {
-			@Override
-			public void buttonClick(ClickEvent event) {
-				updateSelectedCellsBold();
-			}
-		});
-		ColorPicker backgroundColor = new ColorPicker();
-		backgroundColor.setCaption("Background Color");
-		backgroundColor.addColorChangeListener(new ColorChangeListener() {
-			@Override
-			public void colorChanged(ColorChangeEvent event) {
-				updateSelectedCellsBackgroundColor(event.getColor());
-			}
-		});
-		ColorPicker fontColor = new ColorPicker();
-		fontColor.setCaption("Font Color");
-		fontColor.addColorChangeListener(new ColorChangeListener() {
-			@Override
-			public void colorChanged(ColorChangeEvent event) {
-				updateSelectedCellsFontColor(event.getColor());
-			}
-		});
-		toolbar.addComponent(boldButton);
-		toolbar.addComponent(backgroundColor);
-		toolbar.addComponent(fontColor);
-		return toolbar;
-	}
-
-	private void updateSelectedCellsBold() {
+	
+	private List<String> getSelectedCells() {
+		//Select the column that is going to be header
 		
-	}
+		Set<CellReference> cReferences=spreadsheet.getSelectedCellReferences();	
+		
+		if (cReferences != null) {
 
-	private void updateSelectedCellsBackgroundColor(Color newColor) {
-		// TODO Auto-generated method stub
-	}
+			for (CellReference reference : cReferences) {
 
-	private void updateSelectedCellsFontColor(Color newColor) {
-		// TODO Auto-generated method stub
+				if (spreadsheet.getCell(reference) != null) {
+
+					if (spreadsheet.getCell(reference).getCellType() == Cell.CELL_TYPE_BLANK) {
+						
+					} else if (spreadsheet.getCell(reference).getCellType() == Cell.CELL_TYPE_ERROR) {
+						
+					} else if (spreadsheet.getCell(reference).getCellType() == Cell.CELL_TYPE_STRING) {
+						headerList.add(spreadsheet.getCellValue(spreadsheet.getCell(reference)));
+					}
+				}
+			}
+
+		}
+		
+		return headerList;
 	}
 	
 	

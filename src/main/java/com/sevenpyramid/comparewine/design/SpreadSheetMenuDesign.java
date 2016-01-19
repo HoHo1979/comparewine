@@ -21,6 +21,8 @@ import com.vaadin.ui.declarative.Design;
 public class SpreadSheetMenuDesign extends VerticalLayout {
 	protected HorizontalLayout menuLayout;
 	protected Button saveButton;
+	protected Button matchHeaderButton;
+	protected Button setHeaderButton;
 	protected VerticalLayout spreadSheetLayout;
 
 	public SpreadSheetMenuDesign() {
