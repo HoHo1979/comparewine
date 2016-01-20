@@ -30,7 +30,7 @@ public class MainView extends MainDesign implements ViewDisplay{
 		addViewWithButtonListener(AddExcelFileView.NAME,AddExcelFileView.class,menuButton1);
 		addViewWithButtonListener(SelectFileView.NAME,SelectFileView.class , menuButton2);
 		addViewWithButtonListener(CollaborateHeadView.NAME, CollaborateHeadView.class, menuButton3);
-		
+		addViewWithButtonListener(CompareResultView.NAME, CompareResultView.class, menuButton4);
 		
 		if(navigator.getState().isEmpty()){
 			navigator.addView(AddExcelFileView.NAME, AddExcelFileView.class);

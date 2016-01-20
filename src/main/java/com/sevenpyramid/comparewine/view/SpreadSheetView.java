@@ -48,8 +48,6 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	}
 
 	
-	
-	
 	public SpreadSheetView(String value) {
 
 		file = new File(fd.getVaadinWebAbsoultPath() + value);
@@ -104,7 +102,6 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 							if((spreadsheet.getCell(reference).getCellType()==Cell.CELL_TYPE_STRING)||
 									(spreadsheet.getCell(reference).getCellType()==Cell.CELL_TYPE_BLANK)){
 									
-								
 								
 								Window w1 = new Window();
 								ComboBox c1=new ComboBox("Match Header", selHeader);
@@ -170,7 +167,6 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 			if(cellValueChangeList!=null){
 				spreadsheet.refreshCells(cellValueChangeList);
 			}
-			
 			
 			Workbook wb=spreadsheet.getWorkbook();
 			FileOutputStream fileOutputStream = new FileOutputStream(file);

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -42,6 +43,26 @@ public class ReadExcel {
 				}
 			}
 
+	}
+	
+
+	public ReadExcel(String value) {
+		
+		FindFilesUnderDirectory filesUnderDirectory = new FindFilesUnderDirectory(Cons.DIRECTORY);
+		File file= new File(filesUnderDirectory.getVaadinWebAbsoultPath()+value);
+		
+			FindXssforHssfExcel excelFile;
+			try {
+				excelFile = new FindXssforHssfExcel(file);
+				if(excelFile.isXSSF()==true){
+					readXSSFFile(excelFile.getXSSFWorkbook());
+				}else if(excelFile.isXSSF()==false){
+					readHSSFFile(excelFile.getHSSFworkbook());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 	}
 
 	private void readHSSFFile(HSSFWorkbook hssFworkbook) {
