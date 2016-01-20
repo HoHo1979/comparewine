@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -84,7 +85,11 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	
 	public void setHeader(Button.ClickEvent event) {
 		headerList = new ArrayList<String>();
-		UI.getCurrent().getSession().setAttribute(Cons.SEL_HEADER,getSelectedCells());
+		String [] header ={"Name","Quantity","Classification","Vintage","Price Euro","Price US","Bottle Size","Orign","Country","Score"};
+		List<String> selHeader=Arrays.asList(header);
+		
+		UI.getCurrent().getSession().setAttribute(Cons.SEL_HEADER,selHeader);
+		//UI.getCurrent().getSession().setAttribute(Cons.SEL_HEADER,getSelectedCells());
 			
 	}
 
@@ -92,17 +97,18 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	public void matchHeader(Button.ClickEvent event) {
 
 		List<String> selHeader=(List<String>) UI.getCurrent().getSession().getAttribute(Cons.SEL_HEADER);
+		//String [] header ={"Name","Vintage","Price","Price/Unit","Bottle Size","Orign","Country","Score"};
+		//List<String> selHeader=Arrays.asList(header);
 		Set<CellReference> cReferences=spreadsheet.getSelectedCellReferences();
 		
 		
 		if(cReferences!=null){
 			cReferences.stream()
 						.forEach(reference->{
-							//for each reference match the header that is pre set.
+							//for each reference match the header that is pre defined.
 							if((spreadsheet.getCell(reference).getCellType()==Cell.CELL_TYPE_STRING)||
 									(spreadsheet.getCell(reference).getCellType()==Cell.CELL_TYPE_BLANK)){
-									
-								
+							
 								Window w1 = new Window();
 								ComboBox c1=new ComboBox("Match Header", selHeader);
 								Button b1 = new Button("Comfirm");
@@ -205,6 +211,7 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 
 		}
 		
+			
 		return headerList;
 	}
 	

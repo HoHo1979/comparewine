@@ -10,6 +10,7 @@ public class WinePrice {
 	private String origon;
 	private String country;
 	private String score;
+	private String quantity;
 	
 	public WinePrice(){
 		
@@ -78,6 +79,16 @@ public class WinePrice {
 	}
 	public void setScore(String score) {
 		this.score = score;
+	}
+
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 	
 	
