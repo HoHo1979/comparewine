@@ -11,6 +11,7 @@ public class WinePrice {
 	private String country;
 	private String score;
 	private String quantity;
+	private String supplier;
 	
 	public WinePrice(){
 		
@@ -89,6 +90,16 @@ public class WinePrice {
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
+	}
+
+
+	public String getSupplier() {
+		return supplier;
+	}
+
+
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
 	}
 	
 	

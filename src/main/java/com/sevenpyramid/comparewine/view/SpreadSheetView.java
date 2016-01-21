@@ -77,6 +77,9 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 			e.printStackTrace();
 		}
 
+		
+		
+		
 		saveButton.addClickListener(this::saveExcelFile);
 		setHeaderButton.addClickListener(this::setHeader);
 		matchHeaderButton.addClickListener(this::matchHeader);
@@ -85,7 +88,7 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	
 	public void setHeader(Button.ClickEvent event) {
 		headerList = new ArrayList<String>();
-		String [] header ={"Name","Quantity","Classification","Vintage","Price Euro","Price US","Bottle Size","Orign","Country","Score"};
+		String [] header ={Cons.H_Name,Cons.H_Quantity,Cons.H_Classification,Cons.H_Vintage,Cons.H_Price_Euro,Cons.H_Price_US,Cons.H_Bottle_Size,Cons.H_Orign,Cons.H_Country,Cons.H_Score};
 		List<String> selHeader=Arrays.asList(header);
 		
 		UI.getCurrent().getSession().setAttribute(Cons.SEL_HEADER,selHeader);

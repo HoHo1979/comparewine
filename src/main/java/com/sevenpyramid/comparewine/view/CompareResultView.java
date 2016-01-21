@@ -37,7 +37,6 @@ public class CompareResultView extends CompareResultDesign implements View {
 		
 		selectFiles.stream()
 					.forEach(value->{
-						System.out.println(value);
 						FindEexcelHeader findExcelHeader = new FindEexcelHeader(value);
 					});
 		
