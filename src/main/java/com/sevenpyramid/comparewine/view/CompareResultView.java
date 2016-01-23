@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -20,8 +21,14 @@ import com.sevenpyramid.comparewine.excel.FindEexcelWinePrice;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.shared.ui.MarginInfo;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.Button.ClickEvent;
 
 public class CompareResultView extends CompareResultDesign implements View {
 
@@ -29,9 +36,43 @@ public class CompareResultView extends CompareResultDesign implements View {
 	List<String> header;
 	HashSet<String> selectFiles;
 	ArrayList<FileAttribute> filesAttributes;
+	ArrayList<WinePrice> tempPrices;
 	
 	public CompareResultView() {
+		TextField t1 = new TextField("Please Enter the Search Name");
+		Button b1 = new Button("Search");
+		b1.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				String name=t1.getValue().toUpperCase();
+				
+				if(tempPrices!=null){
+					
+					Set<WinePrice> winePriceSet=tempPrices.stream()
+							.filter(x->x.getWineName().contains(name))
+							.sorted(Comparator.comparing((WinePrice w)->w.getWineName())
+							.thenComparing(Comparator.comparing((WinePrice w1)->w1.getBottleSize())))
+							.collect(Collectors.toSet());
+					
+					resultGrid.removeAllColumns();
+					
+					resultGrid.setCaption("Compare Price");
+					BeanItemContainer<WinePrice> beanItemContainer =new BeanItemContainer<WinePrice>(WinePrice.class);
+					beanItemContainer.addAll(winePriceSet);
+					resultGrid.setContainerDataSource(beanItemContainer);
+					resultGrid.setColumns("wineName","wineVintage","price","bottleSize","supplier","isCheapest");
+					resultGrid.setImmediate(true);
+					
+				}
+				
+			}
+		});
 		
+		
+		upperHLayout.addComponent(t1);
+		upperHLayout.addComponent(b1);
+
 		
 	}
 
@@ -46,7 +87,7 @@ public class CompareResultView extends CompareResultDesign implements View {
 			}
 			
 	
-			ArrayList<WinePrice> tempPrices=winePrices;
+			tempPrices=winePrices;
 			
 			for(WinePrice x:tempPrices){
 			
