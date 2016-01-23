@@ -3,52 +3,37 @@ package com.sevenpyramid.comparewine.beans;
 public class WinePrice {
 
 	private String wineName;
-	private String wineVintage;
-	private String price;
+	private double wineVintage;
+	private double price;
 	private String priceUnit;
-	private String bottleSize;
+	private double bottleSize;
 	private String origon;
 	private String country;
 	private String score;
 	private String quantity;
 	private String supplier;
-	
+	private String isCheapest="";
+
 	public WinePrice(){
 		
 	}
 	
-	
-	public WinePrice(String wineName, String wineVintage, String price,
-			String priceUnit, String bottleSize, String origon, String country,
-			String score) {
-		super();
-		this.wineName = wineName;
-		this.wineVintage = wineVintage;
-		this.price = price;
-		this.priceUnit = priceUnit;
-		this.bottleSize = bottleSize;
-		this.origon = origon;
-		this.country = country;
-		this.score = score;
-	}
-
-
 	public String getWineName() {
 		return wineName;
 	}
 	public void setWineName(String wineName) {
 		this.wineName = wineName;
 	}
-	public String getWineVintage() {
+	public double getWineVintage() {
 		return wineVintage;
 	}
-	public void setWineVintage(String wineVintage) {
+	public void setWineVintage(double wineVintage) {
 		this.wineVintage = wineVintage;
 	}
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public String getPriceUnit() {
@@ -57,10 +42,10 @@ public class WinePrice {
 	public void setPriceUnit(String priceUnit) {
 		this.priceUnit = priceUnit;
 	}
-	public String getBottleSize() {
+	public double getBottleSize() {
 		return bottleSize;
 	}
-	public void setBottleSize(String bottleSize) {
+	public void setBottleSize(double bottleSize) {
 		this.bottleSize = bottleSize;
 	}
 	public String getOrigon() {
@@ -101,9 +86,15 @@ public class WinePrice {
 	public void setSupplier(String supplier) {
 		this.supplier = supplier;
 	}
-	
-	
-	
-	
+
+	public String getIsCheapest() {
+		return isCheapest;
+	}
+
+	public void setIsCheapest(String isCheapest) {
+		this.isCheapest = isCheapest;
+	}
+
+
 	
 }

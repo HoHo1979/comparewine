@@ -100,8 +100,6 @@ public class SpreadSheetView extends SpreadSheetMenuDesign implements View {
 	public void matchHeader(Button.ClickEvent event) {
 
 		List<String> selHeader=(List<String>) UI.getCurrent().getSession().getAttribute(Cons.SEL_HEADER);
-		//String [] header ={"Name","Vintage","Price","Price/Unit","Bottle Size","Orign","Country","Score"};
-		//List<String> selHeader=Arrays.asList(header);
 		Set<CellReference> cReferences=spreadsheet.getSelectedCellReferences();
 		
 		
