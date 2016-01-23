@@ -154,6 +154,8 @@ public class FindEexcelWinePrice{
 							sTemp=sTemp.replace("CHATEAU ", "");
 						}
 						
+						sTemp=sTemp.trim();
+						
 					    winePrice.setWineName(sTemp);
 					
 					});

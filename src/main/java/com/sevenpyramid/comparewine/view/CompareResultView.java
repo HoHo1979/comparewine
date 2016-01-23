@@ -66,7 +66,6 @@ public class CompareResultView extends CompareResultDesign implements View {
 						.sorted(Comparator.comparing((WinePrice x)->x.getWineName()).thenComparing(Comparator.comparing((WinePrice y)->y.getBottleSize())))
 						.collect(Collectors.toList());
 			
-			
 				
 			if(tempPrices!=null){
 				resultGrid.setCaption("Compare Price");
